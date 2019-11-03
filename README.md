@@ -1,4 +1,4 @@
-# Object Oriented Cash Register
+Hey# Object Oriented Cash Register
 
 ## Objectives
 
