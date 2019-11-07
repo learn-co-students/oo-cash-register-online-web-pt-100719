@@ -4,18 +4,16 @@ class CashRegister
   attr_accessor :total, :items
   attr_reader :discount
   
-  @@item = []
-
   def initialize(e_discount = 0)
+    @items = []
     @total = 0
     @discount = e_discount
   end
 
   def add_item(title, price, quanity = 1)
     @total += (price * quanity)
-    @item = []
-    @item << title
-    
+    @items << title
+    binding.pry
   end
 
   def apply_discount
