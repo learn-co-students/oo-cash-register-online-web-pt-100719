@@ -1,4 +1,4 @@
-
+require 'pry'
 class CashRegister
   
   attr_accessor :total 
@@ -7,7 +7,7 @@ class CashRegister
   def initialize(emp_discount = 0)
     @total = 0 
     @emp_discount = discount
-    @apply_discount
+   
   end 
   
   def total
@@ -23,10 +23,11 @@ class CashRegister
   end 
   
   def apply_discount
-   if@discount > 0   
+   if @discount > 0   
     self.total = @total - @total * discount / 100.0
-     "After the discount, the total comes to $800."
-    else
+     "After the discount, the total comes to $#{total.to_i}."
+    elsif
+    self.discount == 0
        "There is no discount to apply."
     end 
   end 
