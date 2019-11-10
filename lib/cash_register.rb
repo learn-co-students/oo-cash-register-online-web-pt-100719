@@ -1,13 +1,15 @@
 require 'pry'
 class CashRegister
   
-  attr_accessor :total 
+  attr_accessor :total, :items
   attr_reader :discount, :emp_discount
   
-  def initialize(emp_discount = 0)
-    @total = 0 
+  
+  
+  def initialize(emp_discount = nil)
+    @total = 0.00
     @emp_discount = discount
-   
+    @items = []
   end 
   
   def total
@@ -26,10 +28,16 @@ class CashRegister
    if @discount > 0   
     self.total = @total - @total * discount / 100.0
      "After the discount, the total comes to $#{total.to_i}."
-    elsif
-    self.discount == 0
+    else
        "There is no discount to apply."
     end 
+  end 
+  
+  def items
+    register1 = self.new
+    register2 = self.new
+    @items << register
+    @items
   end 
 
 end 
