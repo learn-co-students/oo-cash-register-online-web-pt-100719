@@ -36,7 +36,7 @@ class CashRegister
   def items
     register1 = self.new
     register2 = self.new
-    @items << register
+    @items << item
     @items
   end 
 
