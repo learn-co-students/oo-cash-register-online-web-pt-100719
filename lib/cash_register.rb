@@ -1,11 +1,11 @@
 require 'pry'
 class CashRegister
   
-  attr_accessor :total, :items, :last_transaction,:discount, :emp_discount
-  
+  attr_accessor :total, :items, :last_transaction
+  attr_reader :discount
   def initialize(emp_discount = nil)
     @total = 0.00
-    @emp_discount = discount
+    @emp_discount = discount.to_f
     @items = []
   end 
   
@@ -19,7 +19,10 @@ class CashRegister
   
   def add_item(title, price, quantity = 1)
     @total = @total + price * quantity
-    
+  end 
+  
+  def add_item2(title, price, quantity = 1)
+    @total = @total + price * quantity
   end 
   
   def apply_discount
@@ -30,6 +33,7 @@ class CashRegister
        "There is no discount to apply."
     end 
   end 
+ # binding.pry
   
   def items
     register1 = self.new
