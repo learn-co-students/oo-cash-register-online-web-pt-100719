@@ -4,7 +4,7 @@ class CashRegister
   attr_accessor :total, :items, :last_transaction
   attr_reader :discount
   def initialize(discount = 0)
-    @total = 0.00
+    @total = 0 
     @discount = discount
     @items = []
   end 
@@ -19,12 +19,10 @@ class CashRegister
   
   def add_item(title, price, quantity = 1)
     @total = @total + price * quantity
+    quantity.times do
+    @items << title 
+    end 
   end 
-  
-  def add_item2(title, price, quantity = 1)
-    @total = @total + price * quantity
-  end 
-  
   def apply_discount
    if @discount > 0   
       @total = @total - @total * discount / 100.0
@@ -33,12 +31,9 @@ class CashRegister
        "There is no discount to apply."
     end 
   end 
- # binding.pry
-  
+ 
   def items
-    register1 = Array.new
-    register1 << self
-    @items
+     @items
   end 
   
   def void_last_transaction
