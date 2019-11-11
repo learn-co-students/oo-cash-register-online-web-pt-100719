@@ -1,10 +1,7 @@
 require 'pry'
 class CashRegister
   
-  attr_accessor :total, :items
-  attr_reader :discount, :emp_discount
-  
-  
+  attr_accessor :total, :items, :last_transaction,:discount, :emp_discount
   
   def initialize(emp_discount = nil)
     @total = 0.00
@@ -17,11 +14,12 @@ class CashRegister
   end 
 
   def discount
-    @discount = 20
+    @discount = 20.to_f
   end 
   
   def add_item(title, price, quantity = 1)
     @total = @total + price * quantity
+    
   end 
   
   def apply_discount
@@ -35,9 +33,11 @@ class CashRegister
   
   def items
     register1 = self.new
-    register2 = self.new
-    @items << item
+    @items << register1
     @items
   end 
-
+  
+  def void_last_transaction
+    add_item -= @total
+  end 
 end 
