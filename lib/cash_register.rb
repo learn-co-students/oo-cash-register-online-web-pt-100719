@@ -36,8 +36,8 @@ class CashRegister
  # binding.pry
   
   def items
-    register1 = self.new
-    @items << register1
+    register1 = Array.new
+    register1 << self
     @items
   end 
   
