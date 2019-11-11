@@ -3,9 +3,9 @@ class CashRegister
   
   attr_accessor :total, :items, :last_transaction
   attr_reader :discount
-  def initialize(emp_discount = nil)
+  def initialize(discount = 0)
     @total = 0.00
-    @discount = discount.to_f
+    @discount = discount
     @items = []
   end 
   
@@ -27,7 +27,8 @@ class CashRegister
   
   def apply_discount
    if @discount > 0   
-    @total = @total - @total * discount / 100.0
+   @total = @total - @discount * 10.0
+   # @total = @total - @total * discount / 100.0
      "After the discount, the total comes to $#{total.to_i}."
     else
        "There is no discount to apply."
