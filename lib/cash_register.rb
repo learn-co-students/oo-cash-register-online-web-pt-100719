@@ -22,7 +22,7 @@ class CashRegister
       # Shovel item into the items array
 
   def add_item(item, price, quantity = 1)
-    @price = price
+    @last_item = price * quantity
     @total += price * quantity
     if quantity > 1
       counter = 0
@@ -47,7 +47,7 @@ class CashRegister
 
   def apply_discount
     if @discount > 0
-      @to_take_off = (price * discount)/100
+      @to_take_off = (total * discount)/100
       @total -= @to_take_off
       return "After the discount, the total comes to $#{total}."
     else
@@ -60,11 +60,7 @@ class CashRegister
   # Gives us the refunded amount of the voided transaction
 
   def void_last_transaction
-    if @discount < 0
-      @total = @total - @price # => 1000 - 1000
-    else @discount
-      @total = (@price - @total) - @to_take_off
-    end
+    @total = @total - @last_item
   end
 
 end
