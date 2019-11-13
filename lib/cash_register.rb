@@ -1,3 +1,5 @@
+require 'pry'
+
 class CashRegister
 
   attr_accessor :total, :discount, :price, :items
@@ -60,7 +62,7 @@ class CashRegister
   def void_last_transaction
     if @discount < 0
       @total = @total - @price # => 1000 - 1000
-    else @discount > 0
+    else @discount
       @total = (@price - @total) - @to_take_off
     end
   end
